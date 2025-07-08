@@ -84,3 +84,40 @@ check out this app: [**TikTokenizer**](https://tiktokenizer.vercel.app/)
 ### Byte Pair Encoding (BPE) Algorithm:
 BPE helps solve the above issue by compressing byte sequences. It works by merging frequent byte pairs in the text, allowing for a larger vocabulary and more efficient processing while still using UTF-8.
 
+### Unicode best article: [A Programmer’s Introduction to Unicode](https://www.reedbeta.com/blog/programmers-intro-to-unicode/#:~:text=The%20basic%20elements%20of%20Unicode,%CE%B8%E2%80%9D%20greek%20small%20letter%20theta.)
+
+Unicode is essential for supporting multiple languages and scripts in software. It's complex but necessary for handling global text.
+
+---
+- **Unicode Complexity**:
+   - It's more complex than ASCII and includes 135 scripts for over 1100 languages. It’s designed to handle texts in many languages together.
+
+- **Unicode Codespace**:
+   - Contains over 1 million code points, though only around 128,000 are used so far.
+
+- **Codespace Layout**:
+   - Unicode is divided into 17 planes, each holding 65,536 code points.
+   - **Plane 0** contains most modern scripts like Latin, Cyrillic, Chinese, etc.
+   - 
+- **Encodings**:
+   - **UTF-8**: Most common, uses 1-4 bytes per character.
+   - **UTF-16**: Uses 2 or 4 bytes.
+   - **UTF-32**: Uses 4 bytes, simple but inefficient for large texts.
+
+- **UTF-8**:
+   - Widely used in web and programming. 
+   - Compatible with ASCII and saves space for non-ASCII characters.
+
+- **Combining Marks**:
+   - Some characters are made from multiple code points. Example: "Á" is a combination of "A" and an accent mark.
+
+- **Normalization**:
+   - Different code points can represent the same character. 
+   - Normalization helps in comparing strings consistently.
+
+- **Grapheme Clusters**:
+   - Sometimes multiple code points make one character.
+   - This is useful for text editing and cursor placement.
+
+Unicode is crucial for global text representation.
+
