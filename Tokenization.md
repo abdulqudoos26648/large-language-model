@@ -11,6 +11,7 @@ Tokenization is at the heart of much weirdness of LLMs.
 - Why is LLM worse at non-English languages (e.g. Japanese)? **Tokenization**.
 - Why is LLM bad at simple arithmetic? **Tokenization**.
 - **etc**
+Note, the Tokenizer is a completely separate, independent module from the LLM. It has its own training dataset of text (which could be different from that of the LLM), on which you train the vocabulary using the Byte Pair Encoding (BPE) algorithm. It then translates back and forth between raw text and sequences of tokens. The LLM later only ever sees the tokens and never directly deals with any text.
 
 ---
 
