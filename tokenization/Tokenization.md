@@ -120,3 +120,4 @@ Unicode is essential for supporting multiple languages and scripts in software. 
    - This is useful for text editing and cursor placement.
 
 Unicode is crucial for global text representation.
+[Unicode expressions](https://www.regular-expressions.info/unicode.html)
