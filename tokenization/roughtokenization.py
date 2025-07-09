@@ -132,5 +132,12 @@ with open('vocab.bpe', 'r', encoding="utf-8") as f:
 
 # Extracting the merge operations from the vocab.bpe file
 bpe_merges = [tuple(merge_str.split()) for merge_str in bpe_data.split('\n')[1:-1]]
-# This is equivalent to our "merges"
+# This is equivalent to "merges"
+
+# Sentencepiece encoding
+# Sentencepiece BPE directly operates on Unicode code points and tiktoken works on bytes and then applies BPE that gives rfficiency tokenization for multiple languages in Sentencepiece
+
+import sentencepiece as spm
+spm.SentencePieceTrainer.train(input='toy.txt', model_prefix='toy_model', vocab_size=5000)
+
 
