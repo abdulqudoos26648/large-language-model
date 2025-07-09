@@ -94,7 +94,7 @@ def encode(text):
 print(encode(""))
 print(decode(encode("hello world")))
 
-# Check encoding/decoding with a sample text
+# Checking encoding/decoding with a sample text
 valtext2 = "Kese hai ap, btw me aise hi kch likh rha sahi hai"
 valtext2 = decode(encode(valtext2))
 print(valtext2 == valtext2)
@@ -103,3 +103,34 @@ print(valtext2 == valtext2)
 import regex as re
 gpt2pat = re.compile(r"""'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""")
 print(re.findall(gpt2pat, "btw thank you for coming this far!!"))
+
+# tiktoken library for tokenization
+!pip install tiktoken  # added for colab
+import tiktoken
+
+# GPT-2 Encoding (does not merge spaces)
+enc = tiktoken.get_encoding("gpt2")
+print(enc.encode("    hello world!!!"))
+
+# GPT-4 Encoding (merges spaces)
+enc = tiktoken.get_encoding("cl100k_base")
+print(enc.encode("    hello world!!!"))
+
+# Downloading the necessary vocab and encoder files for GPT-2
+!wget https://openaipublic.blob.core.windows.net/gpt-2/models/1558M/vocab.bpe
+!wget https://openaipublic.blob.core.windows.net/gpt-2/models/1558M/encoder.json
+
+# Reading the encoder.json file and loading it into a dictionary (similar to 'vocab')
+import os, json
+
+with open('encoder.json', 'r') as f:
+    encoder = json.load(f)  # equivalent to our "vocab"
+
+# Reading the vocab.bpe file for merge operations (similar to 'merges')
+with open('vocab.bpe', 'r', encoding="utf-8") as f:
+    bpe_data = f.read()
+
+# Extracting the merge operations from the vocab.bpe file
+bpe_merges = [tuple(merge_str.split()) for merge_str in bpe_data.split('\n')[1:-1]]
+# This is equivalent to our "merges"
+
