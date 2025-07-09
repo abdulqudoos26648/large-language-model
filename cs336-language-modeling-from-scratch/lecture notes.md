@@ -42,120 +42,28 @@ Alignment: if tune model more to desired use cases, require smaller base models
 
 # Lec. 2: Pytorch, Resource Accounting
 
-## Transformers (overall)
+### Lecture Overview:
+- Focus: Training models from bottom-up: tensors → models → optimizers → training loop.
+- Efficiency: Resource management (memory and compute).
 
-* Use self-attention, positional encodings, LayerNorm, MLP, residual connections.
-* Attention: Q, K, V → softmax → weighted sum.
-* Causal masking to prevent looking ahead.
-* Scaling laws: compute, data, parameters scale predictably.
-
-## Memory & FLOPs (What Matters)
-
-* Memory = parameters + activations + gradients + optimizer states.
-* FLOPs:
-
-  * Forward: `2 * tokens * parameters`
-  * Backward: `4 * tokens * parameters`
-  * Total: `~6 * tokens * parameters`
-* Matrix multiplications dominate compute.
-
-## PyTorch Essentials
-
-* Use `.to(device)` for tensors/models.
-* `pin_memory`, `non_blocking=True` for fast data transfer.
-* Mixed precision with `torch.cuda.amp`: use bfloat16/float16 forward, float32 params/grad.
-* Random seeds:
-
-  ```python
-  torch.manual_seed(0)
-  np.random.seed(0)
-  random.seed(0)
-  ```
-
-## `einops` + `jaxtyping`
-
-* `einops`:
-
-  * `rearrange`: clean reshaping with named dims.
-  * `reduce`: clear reductions.
-  * `einsum`: explicit matmul with clear indexing.
-* Example:
-
-  ```python
-  z = einsum(x, y, "batch seq1 hidden, batch seq2 hidden -> batch seq1 seq2")
-  ```
-* `jaxtyping` for documentation:
-
-  ```python
-  x: Float[torch.Tensor, "batch seq hidden"] = torch.ones(2, 3, 4)
-  ```
-
-## Core PyTorch Patterns
-
-### Linear Layer
-
-```python
-class Linear(nn.Module):
-    def __init__(self, in_dim, out_dim):
-        super().__init__()
-        self.weight = nn.Parameter(torch.randn(in_dim, out_dim) / np.sqrt(in_dim))
-    def forward(self, x):
-        return x @ self.weight
-```
-
-### Stacked Linear Model
-
-```python
-class Cruncher(nn.Module):
-    def __init__(self, dim, num_layers):
-        super().__init__()
-        self.layers = nn.ModuleList([Linear(dim, dim) for _ in range(num_layers)])
-        self.final = Linear(dim, 1)
-    def forward(self, x):
-        for layer in self.layers:
-            x = layer(x)
-        return self.final(x).squeeze(-1)
-```
-
-## Optimizers (Simple Versions)
-
-### SGD
-
-```python
-class SGD(torch.optim.Optimizer):
-    def __init__(self, params, lr=0.01):
-        super().__init__(params, dict(lr=lr))
-    def step(self):
-        for group in self.param_groups:
-            for p in group["params"]:
-                p.data -= group["lr"] * p.grad.data
-```
-
-### AdaGrad
-
-```python
-class AdaGrad(torch.optim.Optimizer):
-    def __init__(self, params, lr=0.01):
-        super().__init__(params, dict(lr=lr))
-    def step(self):
-        for group in self.param_groups:
-            for p in group["params"]:
-                grad = p.grad.data
-                state = self.state.setdefault(p, {})
-                g2 = state.get("g2", torch.zeros_like(grad))
-                g2 += grad ** 2
-                state["g2"] = g2
-                p.data -= group["lr"] * grad / (g2.sqrt() + 1e-5)
-```
-
-## Efficiency Insights
-
-* Matrix multiplications = main compute cost.
-* Mixed precision improves speed and reduces memory.
-* Track FLOPs:
-
-  ```python
-  actual_num_flops = 2 * B * D * K
-  actual_flop_per_sec = actual_num_flops / actual_time
-  mfu = actual_flop_per_sec / promised_flop_per_sec
-  ```
+### Key Points:
+- Tensors are the fundamental units for storing data, parameters, gradients, and activations.
+- Memory Usage: 
+  - float32 (4 bytes per element) is standard, but can be inefficient.
+  - float16 and bfloat16 reduce memory usage but risk instability.
+  - fp8 is more efficient, especially for H100 GPUs.
+- Tensor Operations: Matrix multiplication is the most compute-heavy operation.
+- Gradient Computation: Backpropagation uses chain rule to compute gradients.
+- Optimizers:
+  - Basic optimizer: SGD.
+  - Variations: AdaGrad, RMSProp, Adam.
+- Training Loop:
+  1. Data Loading
+  2. Forward Pass (Loss Calculation)
+  3. Backward Pass (Gradient Computation)
+  4. Optimizer Step (Parameter Update)
+- Memory and Compute Trade-offs:
+  - Mixed precision for faster training and reduced memory usage.
+  - Use float32 for parameters and bfloat16/fp8 for activations.
+- FLOPs measure the computation cost (e.g., GPT-3 required 3.14e23 FLOPs).
+- Note, Save model periodically to avoid losing progress during long training.
