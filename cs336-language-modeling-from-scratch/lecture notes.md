@@ -67,3 +67,6 @@ Alignment: if tune model more to desired use cases, require smaller base models
   - Use float32 for parameters and bfloat16/fp8 for activations.
 - FLOPs measure the computation cost (e.g., GPT-3 required 3.14e23 FLOPs).
 - Note, Save model periodically to avoid losing progress during long training.
+
+# Spring 2025 | Lec. 3: Architectures, Hyperparameters
+
