@@ -25,6 +25,19 @@
 - The new and better way is to use **word vectors** (also called **embeddings**).
 - **Word Vectors:** These are short, dense vectors of numbers. The core idea is that a word's meaning is defined by the company it keeps.
 - The vectors for words with similar meanings (like "hotel" and "motel") are **close to each other** in this multi-dimensional space.
+- **Note:** While distance (e.g., Euclidean or cosine similarity) is an important measure of closeness in the embedding space, the **directions in the space** also have semantic meaning.  
+  - Example: **King - Man + Woman = Queen**  
+  - This shows that specific vector directions can encode relationships such as gender.
+
+---
+
+#### **Visualizing High-Dimensional Embeddings**
+
+- Since embeddings exist in very high-dimensional space, it's hard to visualize them directly.  
+- To address this, techniques like **t-distributed Stochastic Neighbor Embedding (t-SNE)** are used.  
+- **t-SNE** projects high-dimensional vectors into **2D or 3D**, making it easier to see clusters and relationships between words.  
+- The professor briefly mentioned t-SNE as a powerful tool to **visualize word embeddings**, where words with similar meanings appear close together in the reduced space.
+
 
 ---
 
@@ -38,12 +51,15 @@
 
 ---
 
-#### **Explanation of the `Word2Vec Overview` Diagram**
+- #### **Explanation of the `Word2Vec Overview` Diagram**
+
+![Word2Vec Overview](path/to/your/image.png)
 
 - The image shows a core concept of the `word2vec` algorithm.
 - It illustrates a sentence fragment: `... problems turning into banking crises as ...`
 - The red highlighted word, "**into**," is the **center word** (`w_t`).
 - The words in purple are the **context words** within a window of size 2. These are the "outside context words." They are `problems` and `turning` to the left, and `banking` and `crises` to the right.
 - The arrows show how the model works: it's calculating the probability of each outside word appearing, given the center word.
-- For example, the model wants to find the probability of `problems` appearing given `into`, or `P(w_t-2 | w_t)`. It does this for all the surrounding words in the window.
+- For example, the model wants to find the probability of `problems` appearing given `into`, or `P(w_{t-2} | w_t)`. It does this for all the surrounding words in the window.
 - The whole point of the `word2vec` training is to adjust the word vectors so these probabilities are as high as possible for the words that actually appear together in the text. This is what teaches the model the relationships between words.
+
