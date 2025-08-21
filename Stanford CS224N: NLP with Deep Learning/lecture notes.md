@@ -53,7 +53,7 @@
 
 - #### **Explanation of the `Word2Vec Overview` Diagram**
 
-![Word2Vec Overview](Stanford CS224N: NLP with Deep Learning/Assets/Word2Vec Overview.png)
+![Word2Vec Overview]([Stanford CS224N: NLP with Deep Learning/Assets/Word2Vec Overview.png](https://github.com/abdulqudoos26648/large-language-model/blob/2cd1bb9df9ced2b2a44383ad7aa5c340d95163aa/Stanford%20CS224N%3A%20NLP%20with%20Deep%20Learning/Assets/Word2Vec%20Overview.png))
 
 - The image shows a core concept of the `word2vec` algorithm.
 - It illustrates a sentence fragment: `... problems turning into banking crises as ...`
