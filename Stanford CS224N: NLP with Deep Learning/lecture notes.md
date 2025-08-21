@@ -29,8 +29,6 @@
   - Example: **King - Man + Woman = Queen**  
   - This shows that specific vector directions can encode relationships such as gender.
 
----
-
 #### **Visualizing High-Dimensional Embeddings**
 
 - Since embeddings exist in very high-dimensional space, it's hard to visualize them directly.  
