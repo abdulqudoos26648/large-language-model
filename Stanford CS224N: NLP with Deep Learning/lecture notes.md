@@ -59,9 +59,7 @@
 
 ---
 
-#### **Explanation of the `Word2Vec Overview` Diagram**
-
-[Word2Vec Overview](https://github.com/abdulqudoos26648/large-language-model/blob/c1515f7aeabc4001dbe8faeb4869d47341b87df1/Stanford%20CS224N%3A%20NLP%20with%20Deep%20Learning/Assets/lect%231/Word2Vec%20Overview.png)
+#### **[Word2Vec Overview](https://github.com/abdulqudoos26648/large-language-model/blob/c1515f7aeabc4001dbe8faeb4869d47341b87df1/Stanford%20CS224N%3A%20NLP%20with%20Deep%20Learning/Assets/lect%231/Word2Vec%20Overview.png)**
 
 - The diagram illustrates the key training setup:  
   - Sentence fragment: `... problems turning into banking crises as ...`  
