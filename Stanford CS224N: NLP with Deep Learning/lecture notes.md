@@ -1,4 +1,4 @@
-#### **[Lecture 1 - Intro and Word Vectors](https://youtu.be/DzpHeXVSC5I?si=h1cKOLC38Qr9DWOX)**
+## **[Lecture 1 - Intro and Word Vectors](https://youtu.be/DzpHeXVSC5I?si=h1cKOLC38Qr9DWOX)**
 
 ---
 
