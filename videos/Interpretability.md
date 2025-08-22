@@ -33,7 +33,7 @@ Findings so far:
 ---
 
 ## Why This Matters
-- It’s not just curiosity — interpretability shows us risks.  
+- It’s not just curiosity that we study but also interpretability shows us risks.  
 
 **Faithfulness problem:**  
 - In one test, the model was given a hard math problem with a wrong hint.  
@@ -49,13 +49,10 @@ Findings so far:
 ---
 
 ## The Future of Interpretability
-- Current tools are clunky — like a microscope that only works 20% of the time.  
+- Current tools are clunky like a microscope that only works 20% of the time.  
 - Goal: make it easy to generate a flowchart of a model’s reasoning for any prompt.  
 
 Potential benefits:
 - Debugging bad behavior.  
 - Building trust by seeing what the model is really doing.  
 - Eventually developing a proper scientific language for how AI works.  
-
-Overall: This isn’t just academic — it’s foundational for making AI safer and more reliable as it gets woven into society.
-
