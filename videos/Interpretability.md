@@ -4,7 +4,7 @@
 
 ---
 
-## Intro
+## Starting
 - Nobody fully knows what’s really going on inside LLMs.  
 - Interpretability = trying to open up the model’s “brain.”  
 - Feels like doing neuroscience on AI or biology on math organisms.  
@@ -57,5 +57,4 @@ Interpretability reveals risks:
 - Claude itself may help with interpretability (good at analyzing large patterns).  
 - Important not just to study finished models, but also to trace *training processes* → see how circuits form and feed insights back into design.
 
----
 ---
