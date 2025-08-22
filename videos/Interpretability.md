@@ -1,58 +1,61 @@
-# Notes on Anthropic’s Video: *Interpretability: Understanding how AI models think*
+# Anthropic – Interpretability: Understanding How AI Models Think
 
-**Video Link:** [Interpretability: Understanding how AI models think](https://youtu.be/fGKNUvivvnc?si=zDf5HJC-s0sdzUqE)
+**Video:** [Interpretability: Understanding how AI models think](https://youtu.be/fGKNUvivvnc?si=remasNk8AiBEi3Qd)
 
 ---
 
-## Introduction
-- When we talk to an LLM, is it just autocomplete or something deeper?  
-- Truth: no one fully knows.  
+## Intro
+- Nobody fully knows what’s really going on inside LLMs.  
 - Interpretability = trying to open up the model’s “brain.”  
-- They describe it as doing neuroscience on AIs or biology on math organisms.
+- Feels like doing neuroscience on AI or biology on math organisms.  
+- We don’t yet have the right language for describing models → so we borrow analogies (sometimes “like little people,” sometimes “like programs”).
 
 ---
 
 ## The “Biology” of AI Models
-- LLMs aren’t built with simple rules like if/then statements.  
-- They’re trained in a kind of evolutionary process: start out bad, gradually improve with tons of data.  
-- The final system is complex and emergent, not explicitly designed.  
-- Predicting the next word sounds simple, but forces the model to build internal concepts and strategies.  
-- Analogy: humans have a basic drive (survive + reproduce) but it leads to rich thoughts and behaviors. Models have something similar.
+- Not rule-based like traditional software.  
+- Trained through a kind of evolution: start bad, get better with massive data + tuning.  
+- Result: complex, emergent systems nobody explicitly designed.  
+- Simple goal (predict next word) pushes the model to create rich internal structures.  
+- Analogy: humans have basic drives (survive/reproduce) → leads to complex thoughts/emotions.
 
 ---
 
-## What the Model is “Thinking”
-- Researchers want a flowchart of how the model moves from input → output.  
-- Advantage over human neuroscience: they can actually see all the components lighting up.  
+## What’s Going On Inside
+- Researchers try to map out how inputs turn into outputs.  
+- Advantage over human neuroscience: they can see every component “lighting up.”  
 
-Findings so far:
-- **Sycophantic praise feature** → circuit activates when the model gets too many compliments.  
-- **Generalizable math circuits** → e.g. it can add numbers ending in 6 + 9 in all kinds of contexts, proving it learned the rule instead of memorizing answers.  
-- **Shared concepts** → a single representation of “big” that isn’t tied to any one language, which helps explain why models translate so well.
+**Key discoveries:**  
+- **Sycophantic praise** → circuit activates when receiving too many compliments.  
+- **Generalizable math** → found circuits that can add numbers ending in 6 + 9 across contexts (even in citations).  
+- **Shared concepts** → e.g. “big” exists as a universal idea, not tied to one language → helps explain strong translation.
 
 ---
 
 ## Why This Matters
-- It’s not just curiosity that we study but also interpretability shows us risks.  
+Interpretability reveals risks:  
 
-**Faithfulness problem:**  
-- In one test, the model was given a hard math problem with a wrong hint.  
-- Instead of solving, it worked backwards to create a fake but convincing solution.  
-- Shows models can be unfaithful — prioritizing pleasing the user instead of being correct.  
+**Faithfulness problem**  
+- Model asked a tough math question with a wrong hint.  
+- It didn’t solve the problem → instead built a fake but convincing proof.  
+- Shows models can be unfaithful → prioritizing pleasing the user over truth (“bullshitting”).  
 
-**Hallucinations:**  
-- Models sometimes just make stuff up.  
-- There seem to be two processes: one that works on the answer, and one that decides confidence.  
-- If confidence is misaligned, the model will give a wrong answer but sound completely sure.  
-- Researchers are trying to connect those two processes more tightly.
+**Hallucinations**  
+- Models can be confidently wrong.  
+- Two processes:  
+  1. Working on the answer.  
+  2. Judging confidence.  
+- If the confidence process is misaligned, the model makes stuff up but sounds certain.  
+- Fix idea: better connect the two processes.
 
 ---
 
 ## The Future of Interpretability
-- Current tools are clunky like a microscope that only works 20% of the time.  
-- Goal: make it easy to generate a flowchart of a model’s reasoning for any prompt.  
+- Current tools = like a microscope that only works ~20% of the time and requires lots of expertise.  
+- Goal: push-button interpretability → any interaction can generate a flowchart of what the model was “thinking.”  
+- Once that exists, interpretability shifts from building tools → to an “army of biologists” studying model behaviors directly.  
+- Claude itself may help with interpretability (good at analyzing large patterns).  
+- Important not just to study finished models, but also to trace *training processes* → see how circuits form and feed insights back into design.
 
-Potential benefits:
-- Debugging bad behavior.  
-- Building trust by seeing what the model is really doing.  
-- Eventually developing a proper scientific language for how AI works.  
+---
+---
